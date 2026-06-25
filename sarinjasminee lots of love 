@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✿ Blog Peribadi ✿</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── Custom Cursor ── */
+    * { cursor: url('https://cur.cursors-4u.net/food/foo-2/foo131.cur'), auto !important; }
+
+    /* ── Reset & Base ── */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fef0f4;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 19px, #fad8e4 19px, #fad8e4 20px),
+        repeating-linear-gradient(90deg, transparent, transparent 19px, #fad8e4 19px, #fad8e4 20px);
+      font-family: 'Nunito', sans-serif;
+      color: #8a5060;
+    }
+
+    /* ── Header ── */
+    #header {
+      background: linear-gradient(135deg, #fcd5e0, #f9b8cc);
+      text-align: center;
+      padding: 18px 10px 10px;
+      border-bottom: 4px dashed #f4a0bc;
+      position: relative;
+    }
+    #header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.2em;
+      color: #c4788a;
+      margin: 0;
+      text-shadow: 2px 2px 0px #f0b8c8, 4px 4px 8px rgba(200,120,150,0.2);
+      letter-spacing: 2px;
+    }
+    #header p {
+      color: #c4889a;
+      font-size: 0.9em;
+      margin: 4px 0 0;
+    }
+
+    /* ── Marquee strip ── */
+    .marquee-strip {
+      background: #f9c0d4;
+      color: #c4788a;
+      font-size: 0.82em;
+      padding: 4px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-strip span {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(100vw); }
+      to   { transform: translateX(-100%); }
+    }
+
+    /* ── Layout ── */
+    #wrapper {
+      display: flex;
+      max-width: 960px;
+      margin: 16px auto;
+      gap: 14px;
+      padding: 0 10px;
+    }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      width: 210px;
+      flex-shrink: 0;
+    }
+    .sidebar-box {
+      background: #fff7f9;
+      border: 2px solid #f9c8d8;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 14px;
+      text-align: center;
+      box-shadow: 3px 3px 0 #f9c8d8;
+    }
+    .sidebar-box img.avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid #f4b0c4;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+    .sidebar-box .name {
+      font-family: 'Pacifico', cursive;
+      color: #c4788a;
+      font-size: 1.05em;
+      margin: 4px 0;
+    }
+    .sidebar-box .bio {
+      font-size: 0.78em;
+      color: #a87888;
+      line-height: 1.5;
+    }
+    .strawberry-row {
+      font-size: 1.2em;
+      letter-spacing: 2px;
+      margin: 8px 0 0;
+      animation: sway 2s ease-in-out infinite alternate;
+    }
+    @keyframes sway {
+      from { transform: rotate(-5deg); }
+      to   { transform: rotate(5deg); }
+    }
+    .sidebar-box .section-title {
+      font-family: 'Pacifico', cursive;
+      color: #c4788a;
+      font-size: 0.9em;
+      border-bottom: 2px dashed #f9c8d8;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+    .sidebar-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+    .sidebar-box ul li::before { content: "🍓 "; }
+    .sidebar-box ul li {
+      font-size: 0.8em;
+      padding: 3px 0;
+      color: #a87888;
+    }
+
+    /* Monkey bounce */
+    .monkey {
+      font-size: 2em;
+      display: inline-block;
+      animation: bounce 0.7s ease-in-out infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+
+    /* ── Main Content ── */
+    #main {
+      flex: 1;
+    }
+
+    /* ── Post Card ── */
+    .post {
+      background: #fff7f9;
+      border: 2px solid #f9c8d8;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      box-shadow: 4px 4px 0 #f9c8d8;
+    }
+    .post-header {
+      border-bottom: 2px dashed #f9c8d8;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .post-title {
+      font-family: 'Pacifico', cursive;
+      color: #c4788a;
+      font-size: 1.25em;
+      margin: 0 0 4px;
+    }
+    .post-meta {
+      font-size: 0.75em;
+      color: #b89098;
+    }
+    .post-meta a { color: #c4788a; text-decoration: none; }
+    .post-body {
+      font-size: 0.88em;
+      line-height: 1.75;
+      color: #8a5060;
+    }
+    .post-body img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 3px solid #f9c8d8;
+      display: block;
+      margin: 10px auto;
+    }
+    .post-footer {
+      border-top: 2px dashed #f9c8d8;
+      margin-top: 12px;
+      padding-top: 8px;
+      font-size: 0.78em;
+      color: #b89098;
+      text-align: right;
+    }
+    .post-footer a {
+      color: #c4788a;
+      text-decoration: none;
+    }
+    .post-footer a:hover { text-decoration: underline; }
+
+    /* ── Follow button ── */
+    .follow-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #f9c0d4, #e8a0b8);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.8em;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      box-shadow: 2px 2px 0 #d898b0;
+      transition: transform 0.1s;
+    }
+    .follow-btn:hover { transform: scale(1.05); }
+
+    /* ── Footer ── */
+    #footer {
+      text-align: center;
+      padding: 14px;
+      font-size: 0.78em;
+      color: #c4a0aa;
+      border-top: 3px dashed #f9c8d8;
+      margin-top: 10px;
+    }
+
+    /* Floating strawberries */
+    .float-strawberry {
+      position: fixed;
+      font-size: 1.4em;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating strawberries -->
+  <div class="float-strawberry" style="left:5%;  animation-delay:0s;  animation-duration:7s;">🍓</div>
+  <div class="float-strawberry" style="left:20%; animation-delay:1.5s;animation-duration:9s;">🍓</div>
+  <div class="float-strawberry" style="left:40%; animation-delay:3s;  animation-duration:6s;">🍓</div>
+  <div class="float-strawberry" style="left:60%; animation-delay:0.8s;animation-duration:8s;">🍓</div>
+  <div class="float-strawberry" style="left:80%; animation-delay:2s;  animation-duration:7.5s;">🍓</div>
+  <div class="float-strawberry" style="left:92%; animation-delay:4s;  animation-duration:6.5s;">🍓</div>
+
+  <!-- Header -->
+  <div id="header">
+    <h1>✿ somewhere honest ✿</h1>
+    <p>a little corner where thoughts find their words ♡</p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-strip">
+    <span>🍓 glad you found this place &nbsp;✿&nbsp; stay as long as you like &nbsp;♡&nbsp; some things are easier written than said &nbsp;🍓&nbsp; glad you found this place &nbsp;✿&nbsp; stay as long as you like &nbsp;♡&nbsp; some things are easier written than said 🍓</span>
+  </div>
+
+  <!-- Main wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+
+      <!-- Profile box -->
+      <div class="sidebar-box">
+        <img class="avatar" src="https://i.imgur.com/vafzMDF.jpeg"
+             onerror="this.src='https://via.placeholder.com/110x110/f9c8d8/ffffff?text=♡'"
+             alt="Profile Photo"/>
+        <div class="name">sarinjasminee ♡</div>
+        <div class="bio">I write because it's the only way I know how to make sense of things. Not everything here will be pretty — but it'll be real.</div>
+        <div class="strawberry-row">🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓</div>
+        <br/>
+        <button class="follow-btn">+ Follow</button>
+      </div>
+
+      <!-- Monkey -->
+      <div class="sidebar-box">
+        <div class="section-title">my little sidekick</div>
+        <div class="monkey">🐒</div>
+        <div style="font-size:0.78em;color:#a87888;margin-top:6px;">always here, never judging.</div>
+      </div>
+
+      <!-- Categories -->
+      <div class="sidebar-box">
+        <div class="section-title">Categories</div>
+        <ul>
+          <li>Daily Life</li>
+          <li>Feelings & Thoughts</li>
+          <li>Memories</li>
+          <li>Things I Can't Say Out Loud</li>
+          <li>Random</li>
+        </ul>
+      </div>
+
+      <!-- Archive -->
+      <div class="sidebar-box">
+        <div class="section-title">Archive</div>
+        <ul>
+          <li>June 2026</li>
+          <li>May 2026</li>
+          <li>April 2026</li>
+        </ul>
+      </div>
+
+    </div><!-- /sidebar -->
+
+    <!-- Main posts -->
+    <div id="main">
+
+      <!-- Post 1 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-title">✿ so, I finally made this ✿</div>
+          <div class="post-meta">Wednesday, 24 June 2026 | 10:00 AM | <a href="#">0 Comments</a></div>
+        </div>
+        <div class="post-body">
+          <p>I've been putting this off for a while now.</p>
+          <p>Not because I had nothing to say — if anything, I had too much. I just never knew where to put it all. Notes app felt too private. Social media felt too loud. So here we are.</p>
+          <p>This blog isn't going to be curated or aesthetic or any of that. It's just going to be honest. Some entries will be long, some will just be a sentence or two. Whatever it needs to be.</p>
+          <p>If you're reading this — welcome. I hope something here makes you feel a little less alone. 🍓</p>
+        </div>
+        <div class="post-footer">
+          <a href="#">Read more »</a> &nbsp;|&nbsp; <a href="#">Comment</a>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="post">
+        <div class="post-header">
+          <div class="post-title">♡ a little about me ♡</div>
+          <div class="post-meta">Wednesday, 24 June 2026 | 9:00 AM | <a href="#">0 Comments</a></div>
+        </div>
+        <div class="post-body">
+          <p>I'm sarinjasminee. I overthink, I notice small things, and I take way too long to reply — but when I do, I mean every word.</p>
+          <p>I like music that hits at odd hours, conversations that go somewhere unexpected, and the feeling right before something good happens. I'm still figuring most things out, honestly.</p>
+          <p>This space is mine, but you're welcome in it. 🌙</p>
+        </div>
+        <div class="post-footer">
+          <a href="#">Read more »</a> &nbsp;|&nbsp; <a href="#">Comment</a>
+        </div>
+      </div>
+
+    </div><!-- /main -->
+  </div><!-- /wrapper -->
+
+  <!-- Footer -->
+  <div id="footer">
+    ✿ somewhere honest &copy; 2026 &nbsp;|&nbsp; made with 🍓 and quiet nights &nbsp;|&nbsp; best viewed in Chrome
+  </div>
+
+</body>
+</html>
